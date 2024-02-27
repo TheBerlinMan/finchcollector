@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link 
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/stuff/stuff-index.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+  <h1> Stuff List </h1>
+  <img src="{% static 'images/Crank.svg' %}" alt="Crank" />
+  <img src="{% static 'images/Dingus.svg' %}" alt="Dingus" />
+  <img src="{% static 'images/Snoch.svg' %}" alt="Snoch" />
+  <img src="{% static 'images/Horg.svg' %}" alt="Horg" />
+</section>
+
+<section class="card-container">
+  {% for guy in stuff %}
+    <div class="card">
+      <div class="card-content">
+        <div class="card-img-container">
+          <img 
+            src="{% static 'images/favicon.svg' %}" 
+            alt="The guyest of guys."
+          >
+        </div>
+        <h2 class="card-title">{{ guy.name }}</h2>
+       
+        <p>Type: {{ guy.type }}</p>
+        <p>Size: {{ guy.size }}</p>
+        
+        <p><small>{{ guy.description }}</small></p>
+      </div>
+    </div>
+  {% endfor %}
+</section>
+
+{% endblock %}

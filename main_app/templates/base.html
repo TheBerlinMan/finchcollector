@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +9,10 @@
   <link
     rel="shortcut icon"
     type="image/png"
-    href=""
+    href="{% static 'images/favicon.svg' %}"
   >
   <title>Stuff Collector</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
   {% block head %}
   {% endblock %}
 </head>
@@ -18,7 +21,7 @@
     <div class="header-logo-container">
       <a href="/">
         <img 
-          src=""
+          src="{% static 'images/stuff-logo.svg' %}"
           alt="The Stuff Collector Logo"
         >
       </a>
@@ -26,6 +29,7 @@
     <nav>
       <ul>
         <li><a href="/about">About</a></li>
+        <li><a href="/stuff">Stuff</a></li>
       </ul>
     </nav>
   </header>
