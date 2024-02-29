@@ -13,4 +13,6 @@ urlpatterns = [
     path('things/create/', views.ThingsCreate.as_view(), name='thing-create'),
     path('things/<int:pk>/', views.ThingsDetail.as_view(), name='thing-detail'),
     path('things/', views.ThingsList.as_view(), name='thing-index'),
+    path('things/<int:pk>/update/', views.ThingsUpdate.as_view(), name='thing-update'),
+    path('things/<int:pk>/delete/', views.ThingsDelete.as_view(), name='thing-delete'),
 ]

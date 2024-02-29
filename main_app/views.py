@@ -51,3 +51,11 @@ class ThingsList(ListView):
 
 class ThingsDetail(DetailView):
   model = Things
+
+class ThingsUpdate(UpdateView):
+  model = Things
+  fields = ['name', 'color']
+
+class ThingsDelete(DeleteView):
+  model = Things
+  success_url = '/things/'

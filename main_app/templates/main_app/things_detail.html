@@ -7,7 +7,7 @@
   type="text/css"
   href="{% static 'css/things/things-detail.css' %}"
 />
-{% endblock %}
+{% endblock head %}
 
 {% block content %}
   
@@ -18,7 +18,7 @@
     <p>A {{ things.color }} thing</p>
   </div>
 </div>
-{% comment %} <a href="{% url 'thing-update' thing.id %}" class="btn warn">Edit</a> {% endcomment %}
-{% comment %} <a href="{% url 'thing-delete' thing.id %}" class="btn danger">Delete</a> {% endcomment %}
+<a href="{% url 'thing-update' things.id %}" class="btn warn">Edit</a>
+<a href="{% url 'thing-delete' things.id %}" class="btn danger">Delete</a>
 
 {% endblock %}
