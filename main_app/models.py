@@ -4,7 +4,7 @@ from django.urls import reverse
 SIZES = (
   ('S', 'Small'),
   ('M', 'Medium'),
-  ('L', 'Large'),
+  ('L', 'Large')
 )
 
 class Stuff(models.Model):
@@ -24,3 +24,11 @@ class Stuff(models.Model):
   def get_absolute_url(self):
       return reverse("stuff-detail", kwargs={"stuff_id": self.id})
   
+class Walking(models.Model):
+  date = models.DateField()
+  length = models.IntegerField()
+  stuff = models.ForeignKey(Stuff, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return f"{self.get_walk_display()} on {self.date}"
+       
