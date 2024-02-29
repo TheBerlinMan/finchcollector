@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 class Stuff:
   def __init__(self, name, type, description, size):
@@ -16,7 +15,7 @@ stuff = [
 ]
 
 def home(request):
-  return HttpResponse('<h1>Hello ᓚᘏᗢ</h1>')
+  return render(request, 'home.html')
 
 
 def about(request):
