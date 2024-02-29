@@ -28,8 +28,9 @@
     </div>
     <nav>
       <ul>
-        <li><a href="/stuff">Stuff</a></li>
-        <li><a href="/about">About</a></li>
+        <li><a href="{% url 'stuff-index' %}">Stuff</a></li>
+        <li><a href="{% url 'stuff-create' %}">Add Stuff</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
       </ul>
     </nav>
   </header>
