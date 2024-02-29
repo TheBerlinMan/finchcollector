@@ -30,5 +30,5 @@ class Walking(models.Model):
   stuff = models.ForeignKey(Stuff, on_delete=models.CASCADE)
 
   def __str__(self):
-    return f"{self.get_walk_display()} on {self.date}"
+    return f"{self.stuff.name} walked on {self.date} for {self.length} minutes"
        
