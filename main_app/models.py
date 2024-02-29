@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 SIZES = (
   ('S', 'Small'),
@@ -19,3 +20,7 @@ class Stuff(models.Model):
 
   def __str__(self):
     return self.name
+  
+  def get_absolute_url(self):
+      return reverse("stuff-detail", kwargs={"stuff_id": self.id})
+  

@@ -24,6 +24,10 @@
     <p>type: {{ stuff.type }}</p>
     <p>age: {{ stuff.age }}</p>
     <p>bio: {{ stuff.description }}</p>
+    <div class="cat-actions">
+      <a href="{% url 'stuff-update' stuff.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'stuff-delete' stuff.id %}" class="btn danger">Delete</a>
+    </div>
   </div>
 </section>
 
