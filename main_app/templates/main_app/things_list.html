@@ -1,0 +1,36 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block head %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/things/things-index.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+  <h1>All Things</h1>
+  <img src="{% static 'images/thing1.svg' %}" alt="a thing" />
+  <img src="{% static 'images/thing2.svg' %}" alt="a thing" />
+  <img src="{% static 'images/thing3.svg' %}" alt="a thing" />
+  <img src="{% static 'images/thing4.svg' %}" alt="a thing" />
+</section>
+
+<section class="card-container">
+  {% for thing in things_list %}
+  <div class="card" style="border-color: {{ thing.color }}">
+    <div class="card-bg" style="background-color: {{ thing.color }}"></div>
+    <a href="{% url 'thing-detail' thing.id %}">
+      <div class="card-content">
+        <h2>{{ thing.name }}</h2>
+        <p>A {{ thing.color }} thing</p>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</section>
+
+{% endblock %}

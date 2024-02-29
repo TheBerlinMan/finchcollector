@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Stuff
+from django.views.generic import ListView, DetailView
+from .models import Stuff, Things
 from .forms import WalkingForm
 
 def home(request):
@@ -40,3 +41,13 @@ def add_walk(request, stuff_id):
     new_walk.stuff_id = stuff_id
     new_walk.save()
   return redirect('stuff-detail', stuff_id = stuff_id)
+
+class ThingsCreate(CreateView):
+  model = Things
+  fields = '__all__'
+
+class ThingsList(ListView):
+  model = Things
+
+class ThingsDetail(DetailView):
+  model = Things
