@@ -30,5 +30,48 @@
     </div>
   </div>
 </section>
+<div class="feedings-toy-container">
+  <section class="feedings">
+    <h3>Add a Walk</h3>
+    <form
+      method="post" 
+      class="subsection-content"
+      autocomplete="off"
+    >
+      {% csrf_token %}
+      {{ walking_form.as_p }}
+      <button type="submit" class="btn submit">Add Walk</button>
+    </form>
+    <br>
+    <div class="subsection-title">
+      <h2>Walks</h2>
+      <img 
+        src="{% static 'images/shoe.svg' %}" 
+        alt="An ice cream cone cat"
+      />
+      <img 
+        src="{% static 'images/ipod.svg' %}"
+        alt="A cat as onigiri"
+      />
+      <img 
+        src="{% static 'images/bottle.svg' %}" 
+        alt="A kabob of kittens"
+      />
+    </div>
+    <table>
+      <thead>
+        <tr><th>Date</th><th>Walk</th></tr>
+      </thead>
+      <tbody>
+        {% for walk in stuff.walking_set.all %}
+          <tr>
+            <td>{{walk.date}}</td>
+            <td>{{walk.length}} minutes</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</div>
 
 {% endblock %}
