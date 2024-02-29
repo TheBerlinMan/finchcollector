@@ -31,4 +31,6 @@ class Walking(models.Model):
 
   def __str__(self):
     return f"{self.stuff.name} walked on {self.date} for {self.length} minutes"
+  class Meta:
+    ordering = ['-date']
        

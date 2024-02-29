@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Stuff
 from .forms import WalkingForm
@@ -32,3 +32,11 @@ class StuffUpdate(UpdateView):
 class StuffDelete(DeleteView):
   model = Stuff
   success_url='/stuff/'
+
+def add_walk(request, stuff_id):
+  form = WalkingForm(request.POST)
+  if form.is_valid():
+    new_walk = form.save(commit=False)
+    new_walk.stuff_id = stuff_id
+    new_walk.save()
+  return redirect('stuff-detail', stuff_id = stuff_id)
