@@ -79,6 +79,37 @@
       </div>
     {% endif %}
   </section>
+  <section class="feedings"> 
+  <section class="toys">
+    <div class="subsection-title">
+      <h2>Toys</h2>
+      <img src="{% static 'images/thing1.svg' %}" alt="a thing" />
+      <img src="{% static 'images/thing2.svg' %}" alt="a thing" />
+      <img src="{% static 'images/thing3.svg' %}" alt="a thing" />
+    </div>
+    <h3>{{ stuff.name }}'s Things</h3>
+    <div class="subsection-content">
+      {% if stuff.things.count %}
+        {% for thing in stuff.things.all %}
+          <div class="toy-container">
+            <div 
+              class="color-block"
+              style="background-color: {{ thing.color }}"
+            ></div>
+            <a href="{% url 'thing-detail' thing.id %}">
+              <p>A {{ thing.color }} {{ thing.name }}</p>
+            </a>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="no-toys">{{stuff.name}} doesn't have any things 😞</p>
+      {% endif %}
+    </div>
+    <h3>Available Things</h3>
+    <div class="subsection-content">
+      {% comment %} We'll display available toys here {% endcomment %}
+    </div>
+  </section>
 </div>
 
 {% endblock %}

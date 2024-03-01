@@ -7,6 +7,16 @@ SIZES = (
   ('L', 'Large')
 )
 
+class Things(models.Model):
+  name = models.CharField(max_length=50)
+  color = models.CharField(max_length=20)
+
+  def __str__(self):
+      return self.name
+  
+  def get_absolute_url(self):
+      return reverse("thing-detail", kwargs={"pk": self.id})
+
 class Stuff(models.Model):
   name = models.CharField(max_length=100)
   type = models.CharField(max_length=100)
@@ -17,6 +27,7 @@ class Stuff(models.Model):
     default=SIZES[0][0]
   )
   age = models.IntegerField()
+  things = models.ManyToManyField(Things)
 
   def __str__(self):
     return self.name
@@ -35,14 +46,6 @@ class Walking(models.Model):
     ordering = ['-date']
        
 
-class Things(models.Model):
-  name = models.CharField(max_length=50)
-  color = models.CharField(max_length=20)
 
-  def __str__(self):
-      return self.name
-  
-  def get_absolute_url(self):
-      return reverse("thing-detail", kwargs={"pk": self.id})
   
   

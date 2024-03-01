@@ -23,7 +23,7 @@ def stuff_detail(request, stuff_id):
 
 class StuffCreate(CreateView):
   model = Stuff
-  fields = '__all__'
+  fields = ['description', 'type', 'size', 'age']
   success_url='/stuff/'
 
 class StuffUpdate(UpdateView):
