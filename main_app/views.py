@@ -16,9 +16,12 @@ def stuff_index(request):
 
 def stuff_detail(request, stuff_id):
   stuff = Stuff.objects.get(id=stuff_id)
+  things_stuff_doesnt_have = Things.objects.exclude(id__in = stuff.things.all().values_list('id'))
   walking_form = WalkingForm()
   return render(request, 'stuff/detail.html', {
-    'stuff': stuff, 'walking_form': walking_form
+    'stuff': stuff, 
+    'walking_form': walking_form,
+    'things': things_stuff_doesnt_have
   })
 
 class StuffCreate(CreateView):
@@ -59,3 +62,7 @@ class ThingsUpdate(UpdateView):
 class ThingsDelete(DeleteView):
   model = Things
   success_url = '/things/'
+
+def assoc_things(request, stuff_id, things_id):
+  Stuff.objects.get(id=stuff_id).things.add(things_id)
+  return redirect('stuff-detail', stuff_id=stuff_id)
