@@ -16,5 +16,6 @@ urlpatterns = [
     path('things/<int:pk>/update/', views.ThingsUpdate.as_view(), name='thing-update'),
     path('things/<int:pk>/delete/', views.ThingsDelete.as_view(), name='thing-delete'),
     path('stuff/<int:stuff_id>/assoc-thing/<int:things_id>/', views.assoc_things, name='assoc-things'),
-    path('accounts/', include('django.contrib.auth.urls'))
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/signup/', views.signup, name='signup'),
 ]
