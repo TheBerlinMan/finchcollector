@@ -28,11 +28,17 @@
     </div>
     <nav>
       <ul>
-        <li><a href="{% url 'stuff-index' %}">Stuff</a></li>
-        <li><a href="{% url 'thing-index' %}">Things</a></li>
-        <li><a href="{% url 'stuff-create' %}">Add Stuff</a></li>
-        <li><a href="{% url 'thing-create' %}">Add Thing</a></li>
-        <li><a href="{% url 'about' %}">About</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'stuff-index' %}">Stuff</a></li>
+          <li><a href="{% url 'thing-index' %}">Things</a></li>
+          <li><a href="{% url 'stuff-create' %}">Add Stuff</a></li>
+          <li><a href="{% url 'thing-create' %}">Add Thing</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'logout' %}">Log out</a></li>
+        {% else %}
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'home' %}">Login</a></li>
+        {% endif %}
       </ul>
     </nav>
   </header>

@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
+from django.contrib.auth.views import LoginView
 from .models import Stuff, Things
 from .forms import WalkingForm
 
-def home(request):
-  return render(request, 'home.html')
+# def home(request):
+#   return render(request, 'home.html')
+class Home(LoginView):
+  template_name = 'home.html'
 
 def about(request):
   return render(request, 'about.html')
@@ -66,3 +69,4 @@ class ThingsDelete(DeleteView):
 def assoc_things(request, stuff_id, things_id):
   Stuff.objects.get(id=stuff_id).things.add(things_id)
   return redirect('stuff-detail', stuff_id=stuff_id)
+
